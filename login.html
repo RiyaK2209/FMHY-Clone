@@ -1,0 +1,147 @@
+<?php session_start(); ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #f5f6fa;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
+
+        .login-container {
+            display: flex;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+            width: 65vw;
+            height: 500px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            font-size: 14px;
+            color: #34495e;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background: #2980b9;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #1c6ea4;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        .contain1{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contain2{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+        }
+        .signup{
+            background: #ffffff;
+            border: none;
+            border-radius: 5px;
+            color: black;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            padding: 10px;
+            margin-top: 10px;
+            width: 100%;    
+        }
+        .signup:hover{
+            color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <div class="contain1">
+
+        <lottie-player src="anim2.json" background="transparent" speed="5" style="width: 70%; height: 70%;" loop
+          autoplay>
+        </lottie-player>
+
+        <div class="first">
+            <span style="color: rgb(138,193,233); font-size: 40px; font-weight: 700;">FreeM</span><span style="color: rgb(164,188,242); font-size: 40px; font-weight: 700;">edia</span><span style="color: rgb(196,181,253);font-size: 40px;font-weight: 700;">Archieve</span>
+          </div>
+    </div>
+    <div class="contain2">
+
+        <?php if(isset($_SESSION['error'])): ?>
+            <p class="error"><?php echo $_SESSION['error']; unset($_SESSION['error']); ?></p>
+        <?php endif; ?>
+    
+        <form action="auth.php" method="POST" class="login-form">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+    
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+    
+            <button type="submit" class="btn">Login</button>
+
+        </form>
+        <Button class="signup" onclick="window.location.href='signup.html';">Dont have an account? Signup Here</Button>
+    </div>
+    
+</div>
+
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+</body>
+</html>
